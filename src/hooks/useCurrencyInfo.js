@@ -1,13 +1,11 @@
-import { useState } from "react"
-import { useEffect } from "react"
+import { useState, useEffect } from "react"
 
-export const useCurrencyInfo = (currency) => {
+export const useCurrencyInfo = (currency, currencyName) => {
     const [data, setData] = useState({})
 
     useEffect(() => {
-        fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${currency}.json`).then(res => res.json()).then((res) => setData(res[currency]))
-        console.log(data)
-    }, [currency, data])
+        fetch(`https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/${currency}.json`).then(res => res.json()).then((res) => setData(res[currency]))
+    }, [currency, currencyName, data])
 
     return data
 }
